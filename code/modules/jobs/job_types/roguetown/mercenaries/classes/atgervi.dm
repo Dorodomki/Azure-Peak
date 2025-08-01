@@ -79,6 +79,7 @@
 			H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
+			traits_applied = list(TRAIT_SHAMAN)
 			H.change_stat("strength", 3) 
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 2)
