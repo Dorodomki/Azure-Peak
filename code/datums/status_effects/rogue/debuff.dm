@@ -475,3 +475,9 @@
 	desc = "I was on the sermon. My patron is not proud of me."
 	icon_state = "debuff"
 	color ="#af9f9f"
+
+/datum/status_effect/debuff/shamandebuff
+	id = "i don't got my shaman hood!"
+	alert_type = null
+	effectedstats = list("fortune" = -2, "speed" = -1, "endurance" = -1, "constitution" = -1,)
+	duration = 10 SECONDS

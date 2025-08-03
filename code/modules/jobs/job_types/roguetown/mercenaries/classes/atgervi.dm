@@ -32,7 +32,7 @@
 			H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-			H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)	
+			H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -40,11 +40,11 @@
 			H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 
-			H.change_stat("strength", 2)	
+			H.change_stat("strength", 2)
 			H.change_stat("endurance", 3)
 			H.change_stat("constitution", 3)
 			H.change_stat("perception", 1)
-			H.change_stat("speed", -1)	
+			H.change_stat("speed", -1)
 
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
 			gloves = /obj/item/clothing/gloves/roguetown/angle/atgervi
@@ -64,7 +64,7 @@
 			C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = FALSE, devotion_limit = CLERIC_REQ_2)	//Capped to T1 miracles.
 
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	
+			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 			H.cmode_music = 'sound/music/combat_vagarian.ogg'
 		if("Shaman")
 			H.set_blindness(0)
@@ -79,7 +79,7 @@
 			H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
-			H.change_stat("strength", 3) 
+			H.change_stat("strength", 3)
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 2)
 			H.change_stat("intelligence", -1)
@@ -134,7 +134,7 @@
 	desc = "Thick fur pants made to endure the coldest winds, offering a share of protection from fang and claw of beast or men alike."
 	icon_state = "atgervi_pants"
 	item_state = "atgervi_pants"
-	
+
 /obj/item/clothing/gloves/roguetown/angle/atgervi
 	name = "fur-lined leather gloves"
 	desc = "Thick, padded gloves made for the harshest of climates, and wildest of beasts encountered in the untamed lands."
@@ -162,6 +162,7 @@
 	name = "moose hood"
 	desc = "A deceptively strong hood of hide with a pair of large heavy antlers. It is the reward of the fourth trial of the Iskarn Shamans, To slay a Grinning moose in the final hunt alone and fashion a hood from it's head."
 	icon_state = "atgervi_shaman"
+	icon = 'icons/roguetown/clothing/head.dmi'
 	item_state = "atgervi_shaman"
 	flags_inv = HIDEEARS|HIDEFACE
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/atgervi.dmi'
@@ -171,6 +172,45 @@
 	worn_y_dimension = 48
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
+	toggle_icon_state = TRUE
+	dynamic_hair_suffix = ""
+	var/on = FALSE
+	light_outer_range = 5 	//Same as a lamptern; can't be extinguished either.
+	light_power = 1
+	light_color = LIGHT_COLOR_ORANGE
+	light_system = MOVABLE_LIGHT
+
+/obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi/MiddleClick(mob/user)
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	playsound(loc, 'sound/misc/toggle_lamp.ogg', 100)
+	toggle_helmet_light(user)
+	to_chat(user, span_info("I toggle [src] [on ? "on" : "off"]."))
+
+/obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi/MiddleClick(mob/user)
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	playsound(loc, 'sound/misc/toggle_lamp.ogg', 100)
+	toggle_helmet_light(user)
+	to_chat(user, span_info("I toggle [src] [on ? "on" : "off"]."))
+
+/obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi/proc/toggle_helmet_light(mob/living/user)
+	on = !on
+	set_light_on(on)
+	update_icon()
+
+/obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi/update_icon()
+	icon_state = "atgervi_shaman[on]"
+	item_state = "atgervi_shaman[on]"
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_head()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon(force = TRUE)
+	..()
 
 /obj/item/clothing/shoes/roguetown/boots/leather/atgervi
 	name = "atgervi leather boots"

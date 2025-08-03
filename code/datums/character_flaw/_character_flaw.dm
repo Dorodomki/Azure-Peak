@@ -502,3 +502,43 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/critweakness/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+
+/datum/charflaw/shamandebuff
+	name = "Shaman Hood"
+	desc = "The spirits they whisper to me, My hood... i must keep it."
+
+/datum/charflaw/shamandebuff/flaw_on_life(mob/user)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	if(H.head)
+		if(isclothing(H.head))
+			if(istype(H.head, /obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi))
+				var/obj/item/I = H.head
+				if(!I.obj_broken)
+					return
+	H.blur_eyes(2)
+	H.apply_status_effect(/datum/status_effect/debuff/shamandebuff)
+
+
+/datum/status_effect/debuff/shamandebuff
+	id = "i don't got my shaman hood!"
+	alert_type = null
+	effectedstats = list("fortune" = -2, "speed" = -1, "endurance" = -1, "constitution" = -1,)
+	duration = 10 SECONDS
+
+/datum/charflaw/shamandebuff/on_mob_creation(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	if(!H.head)
+		H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi(H), SLOT_HEAD)
+	else
+		new /obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi(get_turf(H))
+	
+	// we don't seem to have a mind when on_mob_creation fires, so set up a timer to check when we probably will
+	addtimer(CALLBACK(src, PROC_REF(apply_reading_skill), H), 5 SECONDS)
+
+/datum/charflaw/shamandebuff/proc/apply_reading_skill(mob/living/carbon/human/H)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
