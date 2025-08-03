@@ -94,6 +94,7 @@
 #define BODYPART_FEATURE_UNDERWEAR "underwear"
 #define BODYPART_FEATURE_CREST "crest"
 #define BODYPART_FEATURE_CONSTRUCT_HEAD "construct_head"
+#define BODYPART_FEATURE_CONSTRUCT_EYE "construct_eye"
 
 //flags for requirements for a surgery step
 #define SURGERY_BLOODY (1<<0)

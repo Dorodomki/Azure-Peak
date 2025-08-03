@@ -1,7 +1,7 @@
 /datum/sprite_accessory/construct_head
 	abstract_type = /datum/sprite_accessory/construct_head
-	layer = HAIR_LAYER
-	icon = 'icons/mob/sprite_accessory/construct_head/construct_head.dmi'
+	layer = HAIREXTRA_LAYER
+	icon = "icons/mob/sprite_accessory/construct_head/construct_head.dmi"
 	default_colors = list("#FFFFFF")
 
 /datum/sprite_accessory/construct_head/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -21,15 +21,15 @@
 
 /datum/sprite_accessory/construct_head/dendorite
 	name = "Dendorite Head"
-	icon_state = "dendorite"	
+	icon_state = "dendorite"
 
 /datum/sprite_accessory/construct_head/eoran
 	name = "Eoran Head"
-	icon_state = "eoran"	
+	icon_state = "eoran"
 
 /datum/sprite_accessory/construct_head/pestran
 	name = "Pestran Head"
-	icon_state = "pestran"	
+	icon_state = "pestran"
 
 /datum/sprite_accessory/construct_head/ravoxian
 	name = "Ravoxian Head"
@@ -37,7 +37,7 @@
 
 /datum/sprite_accessory/construct_head/xylix
 	name = "Xylixian Comedy Head"
-	icon_state = "xylix"	
+	icon_state = "xylix"
 
 /datum/sprite_accessory/construct_head/drama
 	name = "Xylixian Drama Head"
@@ -45,12 +45,12 @@
 
 /datum/sprite_accessory/construct_head/noc
 	name = "Noccite Head"
-	icon_state = "noc"	
+	icon_state = "noc"
 
 /datum/sprite_accessory/construct_head/malum
 	name = "Malumite Head"
-	icon_state = "Malum"	
+	icon_state = "malum"
 
 /datum/sprite_accessory/construct_head/none
 	name = "mass produced Head"
-	icon_state = "none"	
+	icon_state = "none"

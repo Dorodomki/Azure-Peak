@@ -51,6 +51,11 @@
 	feature_slot = BODYPART_FEATURE_CONSTRUCT_HEAD
 	body_zone = BODY_ZONE_HEAD
 
+/datum/bodypart_feature/construct_eye
+	name = "construct eye"
+	feature_slot = BODYPART_FEATURE_CONSTRUCT_EYE
+	body_zone = BODY_ZONE_HEAD
+
 /datum/bodypart_feature/underwear
 	name = "Underwear"
 	feature_slot = BODYPART_FEATURE_UNDERWEAR
