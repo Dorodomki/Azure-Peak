@@ -1011,7 +1011,7 @@
 	smeltresult = /obj/item/ingot/bronze
 	wbalance = WBALANCE_HEAVY
 
-obj/item/rogueweapon/katar/iron/ironchop/militia //im fucking crying i had this idea
+/obj/item/rogueweapon/katar/iron/ironchop/militia //im fucking crying i had this idea
 	name = "handheld scythe"
 	desc = "A iron scythe blade that sits above a rough improvised grip, whoever made this weapon clearly had a mind for the harvest, and a mind for the battlefield. The blade is sharpened to a fine edge designed to cut and chop."
 	icon_state = "choppingharvest"
