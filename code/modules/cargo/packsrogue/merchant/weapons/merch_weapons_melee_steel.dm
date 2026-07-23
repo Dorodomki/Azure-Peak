@@ -224,3 +224,18 @@
 	name = "Falx"
 	cost = 40 // 1 Steel Ingot
 	contains = list(/obj/item/rogueweapon/sword/falx)
+
+/datum/supply_pack/rogue/steel_weapons/claws
+	name = "Fighting claws"
+	cost = 40 // 1 Steel Ingot
+	contains = list(/obj/item/rogueweapon/handclaw/steel/craftable)
+
+/datum/supply_pack/rogue/steel_weapons/gripmace
+	name = "Fighting Handmace"
+	cost = 80 // 2 Steel Ingots
+	contains = list(/obj/item/rogueweapon/katar/steelpunch)
+
+/datum/supply_pack/rogue/steel_weapons/gripclub
+	name = "Fighting grip club"
+	cost = 40 // 1 Steel Ingot
+	contains = list(/obj/item/rogueweapon/handclaw/ironclaw/craftable/blunt)
