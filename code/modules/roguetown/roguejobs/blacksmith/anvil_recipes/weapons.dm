@@ -521,13 +521,6 @@
 	created_item = /obj/item/rogueweapon/katar/iron
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
-/datum/anvil_recipe/weapons/iron/cqcmace
-	name = "Punch Mace, Iron (+1 Iron)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron)
-	created_item = /obj/item/rogueweapon/katar/iron/ironpunch
-	display_category = ITEM_CAT_WEAPONS_MACES
-
 /datum/anvil_recipe/weapons/iron/cqcglove
 	name = "Gauntlet Axe, Iron (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -1058,13 +1051,6 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/katar/steelchop
 	display_category = ITEM_CAT_WEAPONS_AXES
-
-/datum/anvil_recipe/weapons/steel/cqcmace
-	name = "Gauntlet Mace, Steel (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/katar/steelpunch
-	display_category = ITEM_CAT_WEAPONS_MACES
 
 /datum/anvil_recipe/weapons/steel/cqcclaws
 	name = "Fighting Claws, Steel "

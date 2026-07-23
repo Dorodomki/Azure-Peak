@@ -194,10 +194,6 @@
 	cost = 25 // 1 Iron Ingot
 	contains = list(/obj/item/clothing/gloves/roguetown/knuckles/iron)
 
-/datum/supply_pack/rogue/iron_weapons/ironpunch
-	name = "Grip Mace"
-	cost = 50 // 2 Iron Ingots
-	contains = list(/obj/item/rogueweapon/katar/iron/ironpunch)
 
 /datum/supply_pack/rogue/iron_weapons/ironchop
 	name = "Grip Axe"
