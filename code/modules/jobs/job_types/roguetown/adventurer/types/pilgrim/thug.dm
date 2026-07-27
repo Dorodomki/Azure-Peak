@@ -10,7 +10,7 @@
 	category_tags = list(CTAG_TOWNER)
 	traits_applied = list(TRAIT_SEEPRICES_SHITTY)
 	cmode_music = 'sound/music/combat_bum.ogg'
-	maximum_possible_slots = 2 // i dont want an army of towner thugs
+	maximum_possible_slots = 4 // a possible actual thug gang if they work together, but not a whole army of them
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	subclass_stats = list(
 		STATKEY_STR = 2,
@@ -25,8 +25,7 @@
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/axes = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
@@ -51,26 +50,31 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
+	mask = /obj/item/clothing/mask/rogue/leather //masked up for thugging activities
 	backpack_contents = list(
 				/obj/item/flashlight/flare/torch/metal = 1,
 				/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 				/obj/item/rogueweapon/scabbard/sheath = 1,
 				/obj/item/rogueweapon/huntingknife = 1,
 				)
-	var/options = list("Frypan", "Knuckles", "Navaja", "Bare Hands", "My Trusty Cudgel", "Whatever I Can Find")
+	var/options = list("Frypan", "Knuckles & Training", "Navaja", "My Trusty Cudgel", "My Good Hatchet", "Whatever I Can Find")
 	var/option_choice = input("Choose your means.", "TAKE UP ARMS") as anything in options
 	switch(option_choice)
 		if("Frypan")
 			H.adjust_skillrank_up_to(/datum/skill/craft/cooking, SKILL_LEVEL_EXPERT, TRUE) // expert cook; expert pan-handler
 			r_hand = /obj/item/cooking/pan
-		if("Knuckles")
-			r_hand = /obj/item/clothing/gloves/roguetown/knuckles/bronze
+		if("Knuckles & Training")
+			r_hand = /obj/item/clothing/gloves/roguetown/knuckles/iron
+			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 		if("Navaja") //Switchblade aura farm
 			r_hand = /obj/item/rogueweapon/huntingknife/idagger/navaja
-		if("Bare Hands")
-			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+			H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
 		if("My Trusty Cudgel") //The classic.
 			r_hand = /obj/item/rogueweapon/mace/cudgel
+			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
+		if("My Good Hatchet") //A reliable tool
+			r_hand = /obj/item/rogueweapon/stoneaxe/handaxe
+			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 		if("Whatever I Can Find") // random weapon from the dungeon table; could be a wooden club, could be a halberd
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_APPRENTICE, TRUE)
@@ -78,6 +82,30 @@
 			r_hand = /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_LOWER_CLASS, H)
+
+	var/prefixs = list(
+		"Skinny" = "Skinny", // Why
+		"Fat" = "Fat",
+		"Big" = "Big", // Yes, There is two cases where if someone calls themselves "Boss", we need to explode them.
+		"Small" = "Small",
+		"Huge" = "Huge",
+		"Little" = "Little",
+		"Thick" = "Thick",
+		"Thin" = "Thin",
+		"Long" = "Long",
+		"Short" = "Short",
+		"Wide" = "Wide",
+		"Slug" = "Slug",
+		"Molasses" = "Molasses",
+		"Stony" = "Stony",
+		"Quick" = "Quick"
+		)
+	var/prefixchoice = input(H, "What did people start calling you.", "Goon") as anything in prefixs
+	var/prev_real_name = H.real_name
+	var/prev_name = H.name
+	var/prefix = prefixs[prefixchoice]
+	H.real_name = "[prefix] [prev_real_name]"
+	H.name = "[prefix] [prev_name]"
 
 /datum/advclass/thug/wiseguy
 	name = "Wise Guy"
@@ -149,6 +177,30 @@
 			r_hand = /obj/item/lockpickring/mundane
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_LOWER_CLASS, H)
+
+	var/prefixs = list(
+		"Skinny" = "Skinny", // Why
+		"Fat" = "Fat",
+		"Big" = "Big", // Yes, There is two cases where if someone calls themselves "Boss", we need to explode them.
+		"Small" = "Small",
+		"Huge" = "Huge",
+		"Little" = "Little",
+		"Thick" = "Thick",
+		"Thin" = "Thin",
+		"Long" = "Long",
+		"Short" = "Short",
+		"Wide" = "Wide",
+		"Slug" = "Slug",
+		"Molasses" = "Molasses",
+		"Stony" = "Stony",
+		"Quick" = "Quick"
+		)
+	var/prefixchoice = input(H, "What did people start calling you.", "Wise Guy") as anything in prefixs
+	var/prev_real_name = H.real_name
+	var/prev_name = H.name
+	var/prefix = prefixs[prefixchoice]
+	H.real_name = "[prefix] [prev_real_name]"
+	H.name = "[prefix] [prev_name]"
 
 /datum/advclass/thug/bigman
 	name = "Big Fella"
