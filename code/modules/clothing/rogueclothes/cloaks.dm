@@ -2006,3 +2006,12 @@
 			H.update_inv_cloak()
 			H.update_inv_armor()
 
+/obj/item/clothing/cloak/dupatta
+	name = "dupatta"
+	desc = "A loose covering for the chest and shoulders."
+	icon_state = "dupatta"
+	item_state = "dupatta"
+	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK //Able to fit on the right shoulder
+	desc = "Protects you from the weather and your identity from everyone else."
+	detail_tag = "_detail"
+	altdetail_tag = "_detailalt"//has more details for more colours

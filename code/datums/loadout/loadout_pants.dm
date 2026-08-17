@@ -57,9 +57,14 @@
 /datum/loadout_item/formaltrousers
 	name = "Formal Trousers"
 	path = /obj/item/clothing/under/roguetown/tights/formalfancy
-	sort_category = "Pants"	
+	sort_category = "Pants"
 
 /datum/loadout_item/dhoti
 	name = "Dhoti"
 	path = /obj/item/clothing/under/roguetown/tights/dhoti
+	sort_category = "Pants"
+
+/datum/loadout_item/shalwar
+	name = "Shalwar"
+	path = /obj/item/clothing/under/roguetown/tights/shalwar
 	sort_category = "Pants"
