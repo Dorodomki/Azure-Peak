@@ -2008,10 +2008,30 @@
 
 /obj/item/clothing/cloak/dupatta
 	name = "dupatta"
+	icon = 'icons/roguetown/clothing/cloaks.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	desc = "A loose covering for the chest and shoulders."
 	icon_state = "dupatta"
 	item_state = "dupatta"
-	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK //Able to fit on the right shoulder
-	desc = "Protects you from the weather and your identity from everyone else."
 	detail_tag = "_detail"
+	detail_color = "CLOTHING_RED"
 	altdetail_tag = "_detailalt"//has more details for more colours
+	altdetail_color = "CLOTHING_YELLOW"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_cloaks.dmi'
+	sleevetype = "shirt"
+	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_BACK_R|ITEM_SLOT_BACK_L|ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR //Able to fit anywhere
+
+/obj/item/clothing/cloak/dupatta/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+	if(get_altdetail_tag())
+		var/mutable_appearance/pic2 = mutable_appearance(icon(icon, "[icon_state][altdetail_tag]"))
+		pic2.appearance_flags = RESET_COLOR
+		if(get_altdetail_color())
+			pic2.color = get_altdetail_color()
+		add_overlay(pic2)
