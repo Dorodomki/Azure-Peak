@@ -1012,3 +1012,13 @@
 	name = "Donator Kit - Smooth Skikuldic Greatflail"
 	path = /obj/item/enchantingkit/donator_chivalre_drowgreatflailalt
 	ckeywhitelist = list("oddbomber3768")
+
+/datum/loadout_item/donator/lizzyhat
+	name = "Donator Item - Lizzy Hat"
+	path = /obj/item/clothing/head/roguetown/roguehood/lizhat
+	ckeywhitelist = list("flybrokenwings")
+
+/datum/loadout_item/donator/lizzybackpack
+	name = "Donator Item - Lizzy Backpack"
+	path = 	/obj/item/storage/backpack/rogue/backpack/liz
+	ckeywhitelist = list("flybrokenwings")

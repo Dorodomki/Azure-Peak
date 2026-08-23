@@ -552,7 +552,7 @@
 	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/lizhat
-	name = "Lizhat"
+	name = "Shade Hat"
 	desc = "A head's best friend."
 	color = CLOTHING_BROWN
 	icon_state = "commhat"
