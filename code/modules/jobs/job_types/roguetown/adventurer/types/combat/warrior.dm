@@ -748,3 +748,100 @@
 		r_hand = /obj/item/rogueweapon/mace/woodclub/deprived
 		l_hand = /obj/item/rogueweapon/shield/wood/deprived
 		pants = /obj/item/clothing/under/roguetown/loincloth/deprived
+
+/datum/advclass/unarmed
+	name = "Fightmaster"
+	tutorial = "While many Spend their lives in the pursuit of arms, you have chosen to master your own body. You are a trained fighter, not a mere thug but someone who can triumph over armed armsmen. You are able to fight unarmed exceptionally well, no miracles, no magycks and either a madness pulling you to the edge, you are a natural warrior. You are a master of your own body, and any unarmed weapon is an accessory, your hands and feet are the only weapons you fully know."
+	allowed_sexes = list(MALE, FEMALE)
+
+	outfit = /datum/outfit/job/roguetown/adventurer/unarmed
+	cmode_music = 'sound/music/cmode/adventurer/combat_outlander2.ogg'
+	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_CIVILIZEDBARBARIAN, TRAIT_DUALWIELDER)
+	class_select_category = CLASS_CAT_WARRIOR
+	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT, CTAG_LICKER_WRETCH)
+	townie_contract_gate_exempt = TRUE
+	townie_contract_gate_hide_in_list = TRUE
+	subclass_stats = list(
+		STATKEY_STR = 2,
+		STATKEY_WIL = 1,
+		STATKEY_CON = 1,
+		STATKEY_PER = 1,
+	)
+	subclass_skills = list(
+		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
+	)
+
+/datum/outfit/job/roguetown/adventurer/unarmed/pre_equip(mob/living/carbon/human/H)
+	..()
+	to_chat(H, span_warning("While many Spend their lives in the pursuit of arms, you have chosen to master your own body. You are a trained fighter, not a mere thug but someone who can triumph over armed armsmen. You are able to fight unarmed exceptionally well, no miracles, no magycks and either a madness pulling you to the edge, you are a natural warrior. You are a master of your own body, and any unarmed weapon is an accessory, your hands and feet are the only weapons you fully know."))
+	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/warrior]
+	H.set_blindness(0)
+	if(H.mind)
+		var/weapons = list("Katar","Arbelos", "Claws", "Grip Club")
+		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		switch(weapon_choice)
+			if("Katar")
+				r_hand = /obj/item/rogueweapon/katar/bronze
+			if("Arbelos")
+				r_hand = /obj/item/rogueweapon/katar/bronze/gladiator
+			if("Claws")
+				r_hand = /obj/item/rogueweapon/handclaw/ironclaw
+			if("Grip Club")
+				r_hand = /obj/item/rogueweapon/handclaw/ironclaw/blunt
+		var/sidearm = list("Dagger", "Katar")
+		var/sidearm_choice = input(H, "Choose your SIDEARM.", "SAY YOUR PRAYERS.") as anything in sidearm
+		switch(sidearm_choice)
+			if("Dagger")
+				l_hand = /obj/item/rogueweapon/huntingknife/idagger
+			if("Katar")
+				l_hand = /obj/item/rogueweapon/katar
+		var/armors = list("Common Peasantry","Pit Fighter","Gronnic Wildling", "Eastern Fighter")
+		var/armor_choice = input(H, "Choose your background.", "TAKE UP ARMORS!") as anything in armors
+		switch(armor_choice)
+			if("Common Peasantry")
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/cuirass
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+				pants = /obj/item/clothing/under/roguetown/trou/leather
+				neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+				head = /obj/item/clothing/head/roguetown/armingcap/padded
+				cloak = /obj/item/clothing/cloak/raincloak/brown
+			if("Pit Fighter")
+				armor = /obj/item/clothing/suit/roguetown/armor/plate/bronze/light
+				neck = /obj/item/clothing/neck/roguetown/chaincoif/bronze
+				shirt = /obj/item/clothing/suit/roguetown/shirt/rags
+				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/bronzeskirt
+				cloak = /obj/item/clothing/cloak/sash
+			if("Gronnic Wildling")
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+				neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+				shirt = /obj/item/clothing/suit/roguetown/shirt/rags
+				pants = /obj/item/clothing/under/roguetown/trou/leather/atgervi
+				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+				cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
+				shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+			if("Eastern Fighter")
+				armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
+				neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+				shirt = /obj/item/clothing/suit/roguetown/shirt/rags
+				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants2
+				head = /obj/item/clothing/head/roguetown/headband/monk
+				cloak = /obj/item/clothing/cloak/eastcloak2
+				shoes = /obj/item/clothing/shoes/roguetown/sandals
+	belt = /obj/item/storage/belt/rogue/leather
+	backl = /obj/item/storage/backpack/rogue/satchel
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/cloth/monk
+	gloves = /obj/item/clothing/gloves/roguetown/bandages
+	shoes = /obj/item/clothing/shoes/roguetown/boots
+	backpack_contents = list(
+		/obj/item/flashlight/flare/torch = 1,
+		/obj/item/rogueweapon/huntingknife = 1,
+		/obj/item/rogueweapon/scabbard/sheath = 1
+		)
