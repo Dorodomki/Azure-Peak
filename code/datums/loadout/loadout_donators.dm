@@ -1022,3 +1022,8 @@
 	name = "Donator Item - Lizzy Backpack"
 	path = 	/obj/item/storage/backpack/rogue/backpack/liz
 	ckeywhitelist = list("flybrokenwings")
+
+/datum/loadout_item/donator/rivercadaver_tabis
+	name = "Donator Item - Tabis"
+	path = /obj/item/enchantingkit/donator_rivercadaver_tabis
+	ckeywhitelist = list("rivercadaver","muhsollini")
