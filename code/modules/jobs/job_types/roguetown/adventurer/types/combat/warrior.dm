@@ -829,7 +829,7 @@
 			if("Eastern Fighter")
 				armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
 				neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
-				shirt = /obj/item/clothing/suit/roguetown/shirt/rags
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants2
 				head = /obj/item/clothing/head/roguetown/headband/monk
 				cloak = /obj/item/clothing/cloak/eastcloak2
