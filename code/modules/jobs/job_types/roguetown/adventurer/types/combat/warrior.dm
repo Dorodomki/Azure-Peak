@@ -768,8 +768,8 @@
 		STATKEY_PER = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_MASTER,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_MASTER,
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
@@ -795,13 +795,15 @@
 				r_hand = /obj/item/rogueweapon/handclaw/ironclaw
 			if("Grip Club")
 				r_hand = /obj/item/rogueweapon/handclaw/ironclaw/blunt
-		var/sidearm = list("Dagger", "Katar")
+		var/sidearm = list("Dagger", "Katar", "Bronze knife")
 		var/sidearm_choice = input(H, "Choose your SIDEARM.", "SAY YOUR PRAYERS.") as anything in sidearm
 		switch(sidearm_choice)
 			if("Dagger")
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger
 			if("Katar")
-				l_hand = /obj/item/rogueweapon/katar
+				l_hand = /obj/item/rogueweapon/katar/bronze
+			if("Bronze knife")
+				l_hand = /obj/item/rogueweapon/huntingknife/combat/bronze
 		var/armors = list("Common Peasantry","Pit Fighter","Gronnic Wildling", "Eastern Fighter")
 		var/armor_choice = input(H, "Choose your background.", "TAKE UP ARMORS!") as anything in armors
 		switch(armor_choice)
@@ -827,9 +829,9 @@
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 				shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 			if("Eastern Fighter")
-				armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
+				armor = /obj/item/clothing/suit/roguetown/armor/basiceast
 				neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants2
 				head = /obj/item/clothing/head/roguetown/headband/monk
 				cloak = /obj/item/clothing/cloak/eastcloak2
