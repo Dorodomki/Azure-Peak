@@ -596,7 +596,7 @@
 	desc = "Breastplate, pauldrons, couters, cuisses.. did you forget something?"
 	icon_state = "platekini"
 	allowed_sex = list(MALE, FEMALE)
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	body_parts_covered = CHEST | VITALS | GROIN | LEGS | ARMS
 	equip_delay_self = 8 SECONDS
 	unequip_delay_self = 8 SECONDS
 	equip_delay_other = 3 SECONDS
