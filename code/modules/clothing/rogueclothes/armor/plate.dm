@@ -43,7 +43,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/iron/bikini
 	name = "iron half-plate corslet"
 	desc = "A high breastplate and hip armor of iron. It allows flexibility and great protection, save for the stomach."
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = CHEST | VITALS | GROIN
 	icon_state = "ihalfplatekini"
 	item_state = "ihalfplatekini"
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_IRON
@@ -684,7 +684,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	name = "half-plate corslet"
 	desc = "A high breastplate and hip armor allowing flexibility and great protection, save for the stomach."
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = CHEST | VITALS | GROIN
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
 	armor = ARMOR_PLATE // Identical to steel cuirass, but covering the groin instead of the vitals.
