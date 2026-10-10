@@ -437,6 +437,17 @@
 	)
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/sewing/loinclothbelt
+	name = "belt with loincloth"
+	category = "Misc"
+	display_category = ITEM_CAT_ARMOR_BELTS
+	result = list(/obj/item/storage/belt/rogue/leather/battleskirt/loincloth)
+	reqs = list(
+		/obj/item/natural/cloth = 3,
+		/obj/item/natural/hide/cured = 1
+	)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/sewing/beltshawl
 	name = "belt shawl"
 	category = "Misc"
@@ -1111,7 +1122,7 @@
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/gambesonskirt
 	name = "gambesoned kilt"
@@ -1247,7 +1258,7 @@
 	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 	reqs = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 4)
-	craftdiff = 3
+	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/hgambesonskirt
 	name = "padded gambesoned kilt"
@@ -2360,7 +2371,7 @@
 	skillcraft = /datum/skill/magic/holy
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/sewing/maidband
+/datum/crafting_recipe/roguetown/sewing/valorian_maidband
 	name = "valorian maid headband"
 	result = list(/obj/item/clothing/head/roguetown/maidband)
 	reqs = list(
@@ -2369,7 +2380,7 @@
 	)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/sewing/maiddress
+/datum/crafting_recipe/roguetown/sewing/valorian_maiddress
 	name = "valorian maid dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/maidfancy)
 	reqs = list(
@@ -2378,7 +2389,7 @@
 	)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/sewing/maidapron
+/datum/crafting_recipe/roguetown/sewing/valorian_maidapron
 	name = "valorian maid apron"
 	result = list(/obj/item/clothing/cloak/apron/waist/fancymaid)
 	reqs = list(

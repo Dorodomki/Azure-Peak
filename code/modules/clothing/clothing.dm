@@ -5,7 +5,7 @@
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	blade_dulling = FALSE
 	max_integrity = 200
-	integrity_failure = ARMOR_INTEG_FAILURE
+	integrity_failure = GENERIC_INTEG_FAILURE
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	has_item_quality = TRUE
 	///What level of bright light protection item has.
@@ -63,6 +63,8 @@
 	var/chunkcolor = "#5e5e5e"
 	var/material_category = ARMOR_MAT_LEATHER
 	var/throw_on_break = FALSE
+	/// Whitelist of armour that can be worn underneath something despite restrictions. Should be a small list, only.
+	var/list/underlayers
 
 /obj/item
 	var/blocking_behavior
@@ -84,9 +86,15 @@
 
 /obj/item/clothing/Initialize(mapload)
 	. = ..()
-	if(max_integrity && integrity_failure && integrity_failure == ARMOR_INTEG_FAILURE)
-		max_integrity += (max_integrity * 0.11142857143)	// don't ask
-		obj_integrity = max_integrity
+	if(!length(materia))
+		if(anvilrepair) // metal, cloth, and leather/fur items... approximately
+			materia = list(/datum/materia_aspect/defense)
+		else if (salvage_result == /obj/item/natural/cloth || salvage_result == /obj/item/natural/fibers)
+			materia = list(/datum/materia_aspect/plant)
+		else
+			materia = list(/datum/materia_aspect/animal)
+		if(smeltresult == /obj/item/ingot/aaslag && findtext(name, "ancient"))
+			materia += /datum/materia_aspect/aalloy
 
 /obj/item/clothing/examine(mob/user)
 	. = ..()

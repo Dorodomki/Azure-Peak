@@ -14,11 +14,6 @@
 /datum/stressevent/convert/recipient
 	desc = span_green("I was a blind fool, before. Now I see what I have been missing.")
 
-/datum/stressevent/seeblessed
-	timer = 30 MINUTES
-	stressadd = -2
-	desc = span_green("I feel joy within these halls.")
-
 /datum/stressevent/viewsinpunish
 	timer = 5 MINUTES
 	stressadd = -2
@@ -171,6 +166,11 @@
 	desc = span_blue("I feel soothed in this warm, clean water.")
 	timer = 1 MINUTES
 
+/datum/stressevent/bathbomb
+	stressadd = -1
+	desc = span_blue("The softly-scented water calms and refreshes.")
+	timer = 5 MINUTES
+
 /datum/stressevent/bathwater/on_apply(mob/living/user)
 	. = ..()
 	if(user.client)
@@ -278,6 +278,11 @@
 	stressadd = -1
 	desc = span_green("My meditations were rewarding.")
 
+/datum/stressevent/meditation_undivided
+	timer = 20 MINUTES
+	stressadd = -4
+	desc = span_undivided("My communion with the Divines proved fruitful.")
+
 /datum/stressevent/bathcleaned
 	timer = 20 MINUTES
 	stressadd = -3
@@ -288,6 +293,13 @@
 	stressadd = -1
 	desc = span_green("I'm just a bit cleaner.")
 
+/datum/stressevent/alchsoap
+	timer = 20 MINUTES
+	stressadd = -1
+	desc = span_blue("Eora's love lingers with me and brightens my mood.")
+
+/datum/stressevent/alchsoap/baotha
+	desc = span_blue("A nostalgic longing returns to me. Her touch reminds me of a simpler time...")
 
 /datum/stressevent/pacified
 	timer = 30 MINUTES

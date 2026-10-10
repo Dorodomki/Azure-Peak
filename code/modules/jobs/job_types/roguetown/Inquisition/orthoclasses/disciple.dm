@@ -7,7 +7,8 @@
 	subclass_languages = list(/datum/language/otavan)
 	category_tags = list(CTAG_ORTHODOXIST)
 	traits_applied = list(
-		TRAIT_CIVILIZEDBARBARIAN
+		TRAIT_CIVILIZEDBARBARIAN,
+		TRAIT_BLOOD_RESISTANCE
 	)
 	subclass_stats = list(
 		STATKEY_STR = 3,
@@ -72,7 +73,7 @@
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
 			if("Knuckledusters")
 				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
-				r_hand = /obj/item/rogueweapon/knuckledusters/psy
+				gloves = /obj/item/clothing/gloves/roguetown/knuckles/psydon
 
 	head = /obj/item/clothing/head/roguetown/roguehood/psydon
 	mask = /obj/item/clothing/head/roguetown/helmet/blacksteel/psythorns

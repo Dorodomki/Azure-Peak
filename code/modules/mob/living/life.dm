@@ -36,8 +36,7 @@
 	if(!loc)
 		return
 
-	//Breathing, if applicable - CURRENTLY NOT IMPLEMENTED
-	//handle_breathing(times_fired)
+	handle_breathing()
 
 	// SIMPLE WOUNDS
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
@@ -46,16 +45,6 @@
 		handle_blood()
 		//passively heal even wounds with no passive healing
 		heal_wounds(1)
-
-	// PSYDONITE PASSIVE HEALING -- Does not stack with Blackblooded, the latter overwrites this.
-	if(!stat && HAS_TRAIT(src, TRAIT_PSYDONITE) && !HAS_TRAIT(src, TRAIT_BLACKBLOOD) && !HAS_TRAIT(src, TRAIT_PARALYSIS))
-		handle_wounds()
-		// Passively heal wounds when you're in trouble.
-		if(blood_volume > BLOOD_VOLUME_SURVIVE)
-			for(var/datum/wound/wound as anything in get_wounds())
-				if(wound?.severity <= WOUND_SEVERITY_MODERATE)
-					if(!istype(wound, /datum/wound/slash/incision))
-						wound.heal_wound(0.4)
 
 	// REGEN RESTRICTIONS -- Starving, or being on fire/silverfired.
 	var/noregen = nutrition < NUTRITION_LEVEL_STARVING - 75 || has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder) || has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
@@ -182,6 +171,19 @@
 				extinguish_mob()
 			return
 	. =..()
+
+/mob/living/proc/handle_breathing()
+	return TRUE
+
+/mob/living/carbon/handle_breathing()
+	if(HAS_TRAIT(src, TRAIT_NOBREATH))
+		return TRUE
+	var/obj/item/organ/lungs/lung = getorganslot(ORGAN_SLOT_LUNGS)
+	if(!lung || (lung.organ_flags & ORGAN_FAILING))
+		adjustOxyLoss(5)
+		emote("choke")
+		return FALSE
+	return TRUE
 
 /mob/living/proc/DeadLife()
 	set invisibility = 0

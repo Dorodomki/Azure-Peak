@@ -68,6 +68,7 @@
 		else
 			M.emote(pick("twitch_s","chuckle"))
 	M.apply_status_effect(/datum/status_effect/debuff/vampbite)
+	M.sate_addiction(/datum/charflaw/addiction/junkie)
 	..()
 
 /atom/movable/screen/fullscreen/vampsolution
@@ -79,6 +80,8 @@
 
 /datum/reagent/vampsolution/on_mob_metabolize(mob/living/M, mob/living/S)
 	M.overlay_fullscreen("druqk", /atom/movable/screen/fullscreen/druqks)
+	if(!HAS_TRAIT(M, TRAIT_VAMP_BITTEN))
+		ADD_TRAIT(M, TRAIT_VAMP_BITTEN, TRAIT_GENERIC)
 	if(M.client)
 		ADD_TRAIT(M, TRAIT_DRUQK, "based")
 		SSdroning.area_entered(get_area(M), M.client)
